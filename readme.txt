@@ -38,3 +38,8 @@ Improvements:
     5. More UI actions: Such as level-picking, color-switching, and so on.
 
 Github page：
+    http://www.github.com/yarmyarch/sudoku
+    http://yarmyarch.github.io/Sudoku/
+
+Best Regards!
+Yujia
