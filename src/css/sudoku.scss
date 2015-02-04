@@ -1,0 +1,370 @@
+$fontColor: #666;
+$buttonColor: rgb(166,228,254);
+$white: #fff;
+$highlight: #86F;
+
+@mixin pre($tag, $value) {
+    -webkit-#{$tag} : $value;
+    -moz-#{$tag} : $value;
+    -ms-#{$tag} : $value;
+    -o-#{$tag} : $value;
+    #{$tag} : $value;
+}
+
+@mixin clear() {
+    clear: both;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    display: block;
+}
+
+@mixin round() {
+    border-radius: 1000px;
+}
+
+@mixin transSlow() {
+    transition: 0.4s all linear;
+}
+
+@mixin transNormal() {
+    transition: 0.2s all linear;
+}
+
+@mixin transFast() {
+    transition: 0.1s all linear;
+}
+
+@mixin button() {
+    outline: none;
+    display: block;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    @include pre(text-shadow, 0px 0px 6px #fff);
+}
+
+@mixin buttonOuter($borderSize) {
+    border: #{$borderSize}px solid $white;
+    color: $fontColor;
+    @include button;
+    @include transFast;
+    @include pre(box-sizing, border-box);
+}
+
+@mixin buttonInner($borderSize) {
+    background: $buttonColor;
+    border: #{$borderSize}px solid $buttonColor;
+    @include transFast;
+    @include pre(box-sizing, border-box);
+}
+
+@mixin buttonHover() {
+    border-color: $buttonColor;
+}
+
+@mixin buttonInnerHover() {
+    color: $white;
+    border-color: $white;
+}
+
+body{ 
+    margin :0; 
+    padding: 0; 
+    font-size: 14px; 
+    font-family: "Microsoft YaHei"; 
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0!important;
+}
+
+.float-container:after {
+    content: "";
+    @include clear;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.main-wrap {
+    width: 40%;
+    max-width: 1024px; 
+    min-width: 312px;
+    margin: 0 auto;
+}
+
+.welcome-wrap {
+    margin-bottom: 5%;
+}
+
+/*for mobile only*/
+.expand {
+    display:none;
+}
+
+.action-wrap {
+    width: 24%;
+}
+
+.actions {
+    width: 100%;
+}
+
+.action-item {
+    width: 100%;
+    margin: 2% 0;
+    @include buttonOuter(4);
+    @include round;
+}
+
+.action-inner {
+    width: 100%;
+    @include buttonInner(4);
+    @include round;
+    @include pre(box-shadow, 0px 0px 0px 0px $fontColor);
+}
+
+.action-item:hover {
+    @include buttonHover();
+}
+
+.action-item:hover .action-inner {
+    @include buttonInnerHover();
+}
+
+.action-item:active {
+    color: $white;
+}
+
+.action-item:active .action-inner{
+    @include pre(box-shadow, 0px 0px 6px 0px $fontColor);
+}
+
+.action-item:active:hover {
+    border-color: $white;
+}
+
+.action-item:active .action-inner {
+    border-color: $buttonColor;
+}
+
+.action-item.disabled {
+    border-color: $white;
+    cursor: default;
+}
+
+.action-item.disabled .action-inner {
+    border-color: $buttonColor;
+    background: $white;
+}
+
+.action-item.disabled:hover .action-inner {
+    color: $fontColor;
+}
+
+.pixel-wrap {
+    margin-top: 16px;
+}
+
+.pixel-item, .pixel {
+    width: 28px;
+    height: 28px;
+    float: left;
+    position: relative;
+    border-radius: 6px;
+    @include buttonOuter(2);
+}
+
+.pixel-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    @include buttonInner(2);
+    @include pre(box-shadow, 0px 0px 0px 0px $fontColor);
+    @include transFast;
+}
+
+.pixel-item:hover {
+    @include buttonHover();
+}
+
+.pixel-item:hover .pixel-inner {
+    @include buttonInnerHover();
+}
+
+.pixel-item.active {
+    color: $white;
+    z-index: 1;
+}
+
+.pixel-item.active .pixel-inner{
+    @include pre(transform, scale(1.125));
+    @include pre(box-shadow, 0px 0px 6px 0px $fontColor);
+}
+
+.pixel-item.active:hover {
+    border-color: $white;
+}
+
+.pixel-item.active .pixel-inner {
+    border-color: $buttonColor;
+}
+
+@for $i from 1 to 5 {
+    .pixel.pixel-level-#{$i} {
+        background-color: $highlight;
+    }
+    .pixel.pixel-level-#{$i} .pixel-inner {
+        background-color: rgba($buttonColor, 1 - 0.1 * $i);
+    }
+}
+
+.panel {
+    @extend .float-container;
+    @extend .left;
+    clear: both;
+}
+
+.pixel.blank .pixel-inner {
+    background-color: $white;
+}
+
+/*
+.align_left {
+    clear: left;
+}
+
+.panel.align_left, .panel.h_center {
+    margin-right:6px;
+}
+
+.panel.align_top, .panel.v_center {
+    margin-bottom:6px;
+}
+*/
+
+.pixel {
+    opacity: 1;
+    @include pre(transfrom, scale(1));
+    @include transSlow;
+}
+
+.pixel.fadeout {
+    opacity: 0;
+    @include pre(transfrom, scale(2));
+}
+
+.pixel.init .pixel-inner {
+    background-color: $fontColor;
+    color: $white;
+    cursor: default;
+}
+
+.pixel.preview .pixel-inner {
+    opacity: 0.6;
+}
+
+.pixel.conflict .pixel-inner {
+    color: #F00;
+}
+
+/*for mobiles*/
+@media only screen and (max-width: 880px) {
+
+.titleText {
+    line-height:32px;
+    height:32px;
+    float:left;
+    margin: 0 2%;
+}
+
+.info {
+    display: none;
+}
+
+.expand {
+    display: block;
+    width: 32px;
+    text-align: center;
+    cursor: pointer;
+    font-size:2em;
+    color: #000;
+    @extend .titleText;
+    @include pre(text-shadow, 0px 0px 0px #fff);
+    @include transNormal;
+}
+
+.expand:hover {
+    color: $white;
+    @include pre(text-shadow, 0px 0px 6px #666);
+}
+
+.title {
+    @extend .titleText;
+}
+
+.welcome-wrap {
+    margin: 2% 0;
+    background: $buttonColor;
+}
+
+.action-wrap {
+    position: absolute;
+    top:-2%;
+    min-width: 126px;
+    height: 0px;
+    overflow: hidden;
+    @include pre(box-sizing, border-box);
+    @include transNormal;
+}
+
+.action-item, .action-item.disabled {
+    border-radius: 0px;
+    border-width: 2px;
+    margin: 0;
+}
+
+.action-item:hover {
+    border-radius: 0px;
+    border-width: 2px;
+}
+
+.action-item .action-inner {
+    border-radius: 0px;
+    border-width: 2px;
+    padding: 2% 0;
+}
+
+.action-item:hover .action-inner {
+    border-radius: 0px;
+    border-width: 2px;
+}
+
+.content-wrap {
+    float: left;
+    position: relative;
+}
+
+.pixel-wrap {
+    float: right;
+    width: 32px;
+    margin: 0 4%;
+}
+
+.welcome-wrap:after {
+    content: "";
+    @include clear;
+}
+
+}

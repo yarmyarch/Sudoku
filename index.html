@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Sudoku, Uber, Yujia" />
+    <meta name="description" content="Hi Uber." />
+    <meta name="author" content="yarmyarch@live.cn" />
+    <title>Hi Uber!</title>
+    <link rel="stylesheet" href="asset/css/sudoku-all.css">
+</head>
+<body>
+
+<div class="main-wrap">
+    <div class="welcome-wrap">
+        <h3 class="title" id="title">SUDOKU</h3>
+        <div class="expand" id="expandBtn">≡</div>
+        <div class="info">
+            Greetings! Thanks for playing and good luck. If you find the board more than one solutions......
+            <br/>
+            Forget it.
+            <br/>
+            <br/>
+            Enjoy! Or <a href="mailto:yarmyarch@live.cn">let me know</a> if you're having any suggestions.
+        </div>
+    </div>
+    <div class="content-wrap float-container">
+        <div class="sudoku-wrap left" id="sudokuWrap"></div>
+        <div class="action-wrap float-container right" id="actionWrap">
+            <div class="actions">
+                <a href="javascript:void(0);" hidefucus="true" class="action-item" id="actionReset">
+                    <div class="action-inner">Reset</div>
+                </a>
+                <a href="javascript:void(0);" hidefucus="true" class="action-item" id="actionRestart">
+                    <div class="action-inner">Restart</div>
+                </a>
+                <a href="javascript:void(0);" hidefucus="true" class="action-item active" id="actionRetreat">
+                    <div class="action-inner">Retreat</div>
+                </a>
+                <a href="javascript:void(0);" hidefucus="true" class="action-item disabled" id="actionShowTip">
+                    <div class="action-inner">Show tip <span id="timeTip"></span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="pixel-wrap float-container">
+        <a href="javascript:void(0);" hidefucus="true" id="pixelItem_1" class="pixel-item active">
+            <div class="pixel-inner">1</div>
+        </a>
+        <a href="javascript:void(0);" hidefucus="true" id="pixelItem_2" class="pixel-item">
+            <div class="pixel-inner">2</div>
+        </a>
+        <a href="javascript:void(0);" hidefucus="true" id="pixelItem_3" class="pixel-item">
+            <div class="pixel-inner">3</div>
+        </a>
+        <a href="javascript:void(0);" hidefucus="true" id="pixelItem_4" class="pixel-item">
+            <div class="pixel-inner">4</div>
+        </a>
+        <a href="javascript:void(0);" hidefucus="true" id="pixelItem_5" class="pixel-item">
+            <div class="pixel-inner">5</div>
+        </a>
+        <a href="javascript:void(0);" hidefucus="true" id="pixelItem_6" class="pixel-item">
+            <div class="pixel-inner">6</div>
+        </a>
+        <a href="javascript:void(0);" hidefucus="true" id="pixelItem_7" class="pixel-item">
+            <div class="pixel-inner">7</div>
+        </a>
+        <a href="javascript:void(0);" hidefucus="true" id="pixelItem_8" class="pixel-item">
+            <div class="pixel-inner">8</div>
+        </a>
+        <a href="javascript:void(0);" hidefucus="true" id="pixelItem_9" class="pixel-item">
+            <div class="pixel-inner">9</div>
+        </a>
+    </div>
+</div>
+
+<div class="hidden" id="htmlTemplate">
+    <textarea id="htmlPixels">
+        <a href="javascript:void(0);" hidefucus="true" class="pixel blank hidden %pos%"><div class="pixel-inner" id="pixel_%id%"></div></a>
+    </textarea>
+    <textarea id="htmlPanel"><div class="panel %pos%">%pixel%</div></textarea>
+</div>
+
+<script src="asset/js/sudoku-all.js"></script>
+
+</body>
+</html>
